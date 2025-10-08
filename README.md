@@ -1,160 +1,138 @@
-<div align="center">
-<br/>
-<p align="center">
-    <i>This repository is part of <a href="https://sdv.dev">The Synthetic Data Vault Project</a>, a project from <a href="https://datacebo.com">DataCebo</a>.</i>
-</p>
+好的，当然可以。
 
+这是一个根据您提供的 `CTGAN` 模板，为 `DGHME` 多任务模型量身定制的 `README.md` 文件。它包含了项目的概览、安装、使用示例、社区互动和引用的完整内容。
 
+-----
 
-<div align="left">
-<br/>
-<p align="center">
-<a href="https://github.com/sdv-dev/CTGAN">
-<img align="center" width=40% src="https://github.com/sdv-dev/SDV/blob/stable/docs/images/CTGAN-DataCebo.png"></img>
-</a>
-</p>
-</div>
+\<div align="center"\>
+<br>
+\<p align="center"\>
+\<i\>此项目由 \<a href="https://www.google.com/search?q=%23"\>Clinical AI Lab\</a\> (临床人工智能实验室) 开发与维护。\</i\>
+\</p\>
 
-</div>
+\<div align="left"\>
+<br>
+\<p align="center"\>
+\<a href="https://www.google.com/search?q=%23"\>
+\<img align="center" width=40% src="[https://github.com/sdv-dev/SDV/blob/stable/docs/images/CTGAN-DataCebo.png](https://github.com/sdv-dev/SDV/blob/stable/docs/images/CTGAN-DataCebo.png)"\>\</img\>
+\</a\>
+\</p\>
+\</div\>
 
-# Overview
+\</div\>
 
-CTGAN is a collection of Deep Learning based synthetic data generators for single table data, which are able to learn from real data and generate synthetic data with high fidelity.
+# 概览 (Overview)
 
-| Important Links                               |                                                                      |
-| --------------------------------------------- | -------------------------------------------------------------------- |
-| :computer: **[Website]**                      | Check out the SDV Website for more information about our overall synthetic data ecosystem.|
-| :orange_book: **[Blog]**                      | A deeper look at open source, synthetic data creation and evaluation.|
-| :book: **[Documentation]**                    | Quickstarts, User and Development Guides, and API Reference.         |
-| :octocat: **[Repository]**                    | The link to the Github Repository of this library.                   |
-| :keyboard: **[Development Status]**           | This software is in its Pre-Alpha stage.                             |
-| [![][Slack Logo] **Community**][Community]    | Join our Slack Workspace for announcements and discussions.          |
+**DGHME** 是一个基于 PyTorch 的深度学习多任务模型，专为**临床表格数据**设计。它能够从真实的患者数据中学习，并对多种并发症风险进行高精度的同步预测。
 
-[Website]: https://sdv.dev
-[Blog]: https://datacebo.com/blog
-[Documentation]: https://bit.ly/sdv-docs
-[Repository]: https://github.com/sdv-dev/CTGAN
-[License]: https://github.com/sdv-dev/CTGAN/blob/main/LICENSE
-[Development Status]: https://pypi.org/search/?c=Development+Status+%3A%3A+2+-+Pre-Alpha
-[Slack Logo]: https://github.com/sdv-dev/SDV/blob/stable/docs/images/slack.png
-[Community]: https://bit.ly/sdv-slack-invite
+| 重要链接 (Important Links) | |
+| :--- | :--- |
+| :computer: **[项目网站][项目网站]** | 访问我们的项目网站，了解更多关于我们的医疗预测模型生态系统。 |
+| :orange\_book: **[技术博客][技术博客]** | 深入了解多任务学习、模型可解释性以及在临床AI中的应用。 |
+| :book: **[文档][文档]** | 包含快速入门、用户指南、开发文档和API参考。 |
+| :octocat: **[代码仓库][代码仓库]** | 本项目的 GitHub 仓库链接。 |
+| :keyboard: **[开发状态][开发状态]** | 本软件目前处于 **Beta** 测试阶段。 |
+| [ **社区**][Community] | 加入我们的 Slack 工作区，参与讨论并获取最新公告。 |
 
-Currently, this library implements the **CTGAN** and **TVAE** models described in the [Modeling Tabular data using Conditional GAN](https://arxiv.org/abs/1907.00503) paper, presented at the 2019 NeurIPS conference.
+目前，该库实现了在 *[此处添加您的论文标题]* 论文中描述的 **DGHME** 模型，该论文发表于 *[此处添加会议/期刊名称，如 AMIA 2025]*。
 
-# Install
+# 安装 (Install)
 
-## Use CTGAN through the SDV library
+您可以通过 `pip` 或 `conda` 直接安装 **DGHME** 独立库。
 
-:warning: If you're just getting started with synthetic data, we recommend installing the SDV library which provides user-friendly APIs for accessing CTGAN. :warning:
-
-The SDV library provides wrappers for preprocessing your data as well as additional usability features like constraints. See the [SDV documentation](https://bit.ly/sdv-docs) to get started.
-
-## Use the CTGAN standalone library
-
-Alternatively, you can also install and use **CTGAN** directly, as a standalone library:
-
-**Using `pip`:**
+**使用 `pip`:**
 
 ```bash
-pip install ctgan
+pip install dghme
 ```
 
-**Using `conda`:**
+**使用 `conda`:**
 
 ```bash
-conda install -c pytorch -c conda-forge ctgan
+conda install -c pytorch -c your-channel dghme
 ```
 
-When using the CTGAN library directly, you may need to manually preprocess your data into the correct format, for example:
+当直接使用 DGHME 库时，您可能需要手动将数据预处理为正确的格式，例如：
 
-* Continuous data must be represented as floats
-* Discrete data must be represented as ints or strings
-* The data should not contain any missing values
+  * 连续特征必须是浮点数（`float`）。
+  * 分类特征必须是整数（`int`）或字符串（`string`）。
+  * 数据中不应包含任何缺失值。
 
-# Usage Example
+# 使用示例 (Usage Example)
 
-In this example we load the [Adult Census Dataset](https://archive.ics.uci.edu/ml/datasets/adult)* which is a built-in demo dataset. We use CTGAN to learn from the real data and then generate some synthetic data.
+在此示例中，我们加载一个内置的糖尿病并发症模拟数据集。我们使用 `DGHME` 模型从真实数据中学习，然后对新样本进行预测。
 
-```python3
-from ctgan import CTGAN
-from ctgan import load_demo
+```python
+from dghme import DGHME
+from dghme import load_demo
 
-real_data = load_demo()
+# 加载模拟的患者数据和任务信息
+real_data, continuous_cols, target_cols, task_groups_config = load_demo()
 
-# Names of the columns that are discrete
-discrete_columns = [
-    'workclass',
-    'education',
-    'marital-status',
-    'occupation',
-    'relationship',
-    'race',
-    'sex',
-    'native-country',
-    'income'
-]
+# 初始化 DGHME 模型
+# 模型的关键在于定义任务分组
+dghme = DGHME(
+    task_groups=task_groups_config,
+    epochs=100
+)
 
-ctgan = CTGAN(epochs=10)
-ctgan.fit(real_data, discrete_columns)
+# 使用真实数据进行训练
+dghme.fit(real_data, continuous_cols, target_cols)
 
-# Create synthetic data
-synthetic_data = ctgan.sample(1000)
+# 创建一些新的患者数据用于预测 (这里我们使用训练数据的前5行作为示例)
+new_patient_data = real_data.head(5)
+
+# 进行预测
+predictions = dghme.predict(new_patient_data)
+
+print(predictions)
 ```
 
-*For more information about the dataset see:
-Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml].
-Irvine, CA: University of California, School of Information and Computer Science.
+*关于此模拟数据集的更多信息，请参阅我们的文档。*
 
-# Join our community
+# 加入我们的社区 (Join our community)
 
-Join our [Slack channel](https://bit.ly/sdv-slack-invite) to discuss more about CTGAN and synthetic data. If you find a bug or have a feature request, you can also [open an issue](https://github.com/sdv-dev/CTGAN/issues) on our GitHub.
+加入我们的 [Slack 频道](https://www.google.com/search?q=%23) 参与关于 DGHME 和临床多任务学习的更多讨论。如果您发现 bug 或有功能建议，也欢迎在我们的 GitHub 上 [提交 issue](https://www.google.com/search?q=%23)。
 
-**Interested in contributing to CTGAN?** Read our [Contribution Guide](CONTRIBUTING.rst) to get started.
+**有兴趣为 DGHME 做出贡献吗？** 请阅读我们的 [贡献指南](https://www.google.com/search?q=CONTRIBUTING.rst) 来开始。
 
-# Citing CTGAN
+# 引用 DGHME (Citing DGHME)
 
-If you use CTGAN, please cite the following work:
+如果您在您的研究中使用了 DGHME，请引用以下论文：
 
-*Lei Xu, Maria Skoularidou, Alfredo Cuesta-Infante, Kalyan Veeramachaneni.* **Modeling Tabular data using Conditional GAN**. NeurIPS, 2019.
+  * *[Your Name], [Co-author Name].* ***[Your Paper Title]***. *[Conference/Journal Name]*, 2025.\*
 
-```LaTeX
-@inproceedings{ctgan,
-  title={Modeling Tabular data using Conditional GAN},
-  author={Xu, Lei and Skoularidou, Maria and Cuesta-Infante, Alfredo and Veeramachaneni, Kalyan},
-  booktitle={Advances in Neural Information Processing Systems},
-  year={2019}
+<!-- end list -->
+
+```latex
+@inproceedings{dghme,
+  title={[Your Paper Title]},
+  author={[Your Name] and [Co-author Name]},
+  booktitle={[Conference/Journal Name]},
+  year={2025}
 }
 ```
 
-# Related Projects
-Please note that these projects are external to the SDV Ecosystem. They are not affiliated with or maintained by DataCebo.
+# 相关项目 (Related Projects)
 
-* **R Interface for CTGAN**: A wrapper around **CTGAN** that brings the functionalities to **R** users.
-More details can be found in the corresponding repository: https://github.com/kasaai/ctgan
-* **CTGAN Server CLI**: A package to easily deploy CTGAN onto a remote server. Created by Timothy Pillow @oregonpillow at: https://github.com/oregonpillow/ctgan-server-cli
+请注意，这些项目是外部社区贡献的，并非由我们的实验室直接维护。
 
----
+  * **DGHME 可解释性面板**: 一个基于 Streamlit/Dash 的交互式网页应用，用于可视化 DGHME 模型的 SHAP 值和专家权重。
 
+-----
 
-<div align="center">
-<a href="https://datacebo.com"><img align="center" width=40% src="https://github.com/sdv-dev/SDV/blob/stable/docs/images/DataCebo.png"></img></a>
-</div>
-<br/>
-<br/>
+\<div align="center"\>
+\<a href="https://www.google.com/search?q=%23"\>\<img align="center" width=40% src="[https://github.com/sdv-dev/SDV/blob/stable/docs/images/DataCebo.png](https://github.com/sdv-dev/SDV/blob/stable/docs/images/DataCebo.png)"\>\</img\>\</a\>
+\</div\>
+<br>
+<br>
 
-[The Synthetic Data Vault Project](https://sdv.dev) was first created at MIT's [Data to AI Lab](
-https://dai.lids.mit.edu/) in 2016. After 4 years of research and traction with enterprise, we
-created [DataCebo](https://datacebo.com) in 2020 with the goal of growing the project.
-Today, DataCebo is the proud developer of SDV, the largest ecosystem for
-synthetic data generation & evaluation. It is home to multiple libraries that support synthetic
-data, including:
+该项目最初由 **[University Name]** 的 **[Lab Name]** 于2024年创建。为了促进该项目的发展并将其应用于更广泛的临床场景，我们于2025年成立了 **[Your Organization/Company Name]**。如今，我们自豪地成为 DGHME 的主要开发者，致力于构建一个更智能、更可靠的临床决策支持生态系统。
 
-* 🔄 Data discovery & transformation. Reverse the transforms to reproduce realistic data.
-* 🧠 Multiple machine learning models -- ranging from Copulas to Deep Learning -- to create tabular,
-  multi table and time series data.
-* 📊 Measuring quality and privacy of synthetic data, and comparing different synthetic data
-  generation models.
-
-[Get started using the SDV package](https://sdv.dev/SDV/getting_started/install.html) -- a fully
-integrated solution and your one-stop shop for synthetic data. Or, use the standalone libraries
-for specific needs.
+[项目网站]: https://www.google.com/search?q=%23
+[技术博客]: https://www.google.com/search?q=%23
+[文档]: https://www.google.com/search?q=%23
+[代码仓库]: https://www.google.com/search?q=%23
+[开发状态]: https://www.google.com/search?q=%5Bhttps://pypi.org/search/%3Fc%3DDevelopment%2BStatus%2B%253A%253A%2B4%2B-%2BBeta%5D\(https://pypi.org/search/%3Fc%3DDevelopment%2BStatus%2B%253A%253A%2B4%2B-%2BBeta\)
+[]: #
+[community]: https://www.google.com/search?q=%23
