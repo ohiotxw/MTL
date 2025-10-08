@@ -1,13 +1,4 @@
 
-
------
-
-\<div align="center"\>
-<br>
-\<p align="center"\>
-\<i\>此项目由 \<a href="https://www.google.com/search?q=%23"\>Clinical AI Lab\</a\> (临床人工智能实验室) 开发与维护。\</i\>
-\</p\>
-
 \<div align="left"\>
 <br>
 \<p align="center"\>
