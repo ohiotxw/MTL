@@ -1,14 +1,4 @@
 
-\<div align="left"\>
-<br>
-\<p align="center"\>
-\<a href="https://www.google.com/search?q=%23"\>
-\<img align="center" width=40% src="[https://github.com/sdv-dev/SDV/blob/stable/docs/images/CTGAN-DataCebo.png](https://github.com/sdv-dev/SDV/blob/stable/docs/images/CTGAN-DataCebo.png)"\>\</img\>
-\</a\>
-\</p\>
-\</div\>
-
-\</div\>
 
 # 概览 (Overview)
 
