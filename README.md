@@ -115,7 +115,7 @@ If you find this work useful for your research, please cite our paper:
   title={DGHME: A Hierarchical Hybrid Expert Multi-task Learning Model for Disease Grouping in Diabetes Complication Prediction},
   author={Tang, Xiaowei and Li, Hongru and Han, Bowen and Wang, Chenglei and Xu, Lisheng and Yu, Xia},
   journal={IEEE Journal of Biomedical and Health Informatics},
-  year={2024},
+  year={2026},
   publisher={IEEE}
 }
 ```
