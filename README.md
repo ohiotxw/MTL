@@ -1,10 +1,4 @@
-这是一个为您准备的 GitHub `README.md` 文档草稿。它是根据您提供的论文内容（DGHME模型）编写的，结构符合开源学术代码仓库的标准规范。
 
-您可以直接复制以下 markdown 代码到您的项目中，并根据您实际的代码文件结构稍作调整。
-
------
-
-```markdown
 # DGHME: A Hierarchical Hybrid Expert Multi-task Learning Model for Disease Grouping
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -115,19 +109,6 @@ To train baseline models (e.g., MMoE, Shared-Bottom):
 python train.py --model MMoE
 ```
 
-## 📈 Results
-
-DGHME achieves superior performance compared to single-task (GBDT, DNN) and multi-task baselines.
-
-| Model | Avg AUC-ROC | Avg AUC-PR |
-| :--- | :---: | :---: |
-| GBDT | 0.7673 | 0.6757 |
-| DNN | 0.7591 | 0.6692 |
-| MMoE | 0.7682 | 0.6818 |
-| STEM-Net | 0.7775 | 0.6900 |
-| **DGHME (Ours)** | **0.8014** | **0.7141** |
-
-*Results based on 5-fold cross-validation.*
 
 ## 🤝 Citation
 
@@ -143,23 +124,3 @@ If you find this work useful for your research, please cite our paper:
 }
 ```
 
-## 📧 Contact
-
-For any questions, please contact:
-
-  * Xiaowei Tang: tangxw@stumail.neu.edu.cn
-  * Xia Yu (Corresponding Author): yuxia@ise.neu.edu.cn
-
-## Acknowledgments
-
-This work was supported by the Noncommunicable Chronic Diseases-National Science and Technology Major Project and the National Natural Science Foundation of China.
-
-```
-
-### 说明与建议：
-
-1.  **图片占位符**：我在文档中留了 `![Model Framework](path/to/your/image/Fig3_DGHME_framework.png)`。建议您将论文中的 **Fig. 1 (Overall structure)** 或 **Fig. 3 (DGHME framework)** 截图保存为图片文件（如 png），放入仓库的文件夹中，并替换该路径。这样能大大增加 Readme 的可读性。
-2.  **BibTeX 年份**：我在 Citation 中写了 2024，如果论文最终发表年份是 2025，请手动修改。
-3.  **代码结构**：`Project Structure` 部分是假设的标准结构。如果您的实际代码结构不同（例如所有代码都在一个文件中），请相应修改该部分。
-4.  **License**：如果您打算开源代码，记得在仓库中添加一个 `LICENSE` 文件（如 MIT 或 Apache 2.0），这对于学术代码也是推荐的。
-```
