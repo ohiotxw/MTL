@@ -63,8 +63,8 @@ pip install -r requirements.txt
   * numpy
   * pandas
   * scikit-learn
-  * matplotlib (for plotting results)
-  * 
+  * matplotlib
+    
 ## 📊 Dataset
 
 The study utilizes a dataset from the **Population Health Data Archive (PHDA)** containing 3,000 T2DM patient records.
