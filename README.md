@@ -47,7 +47,7 @@ DGHME/
 
 ## 🛠️ Requirements
 
-The code was tested with **Python 3.8+** and **PyTorch**.
+The code was tested with **PyTorch**.
 Install dependencies via:
 
 ```bash
