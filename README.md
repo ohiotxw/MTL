@@ -35,7 +35,6 @@ The DGHME framework is designed based on pathophysiological connections:
 DGHME/
 ├── data/                   \# Data preprocessing scripts and sample data
 │   ├── preprocess.py       \# One-hot encoding and standardization
-│   └── ...
 ├── models/                 \# Model definitions
 │   ├── dghme.py            \# Main DGHME model architecture
 │   ├── layers.py           \# Self-attention, Gating networks, Towers
@@ -60,13 +59,12 @@ pip install -r requirements.txt
 ````
 
 **Core Dependencies:**
-
   * torch
   * numpy
   * pandas
   * scikit-learn
   * matplotlib (for plotting results)
-
+  * 
 ## 📊 Dataset
 
 The study utilizes a dataset from the **Population Health Data Archive (PHDA)** containing 3,000 T2DM patient records.
