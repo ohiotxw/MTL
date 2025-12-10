@@ -21,10 +21,6 @@ Experiments on real-world datasets show that DGHME significantly outperforms sta
 
 ## 🏗️ Model Architecture
 
-The DGHME framework is designed based on pathophysiological connections:
-* **Microvascular Group:** DR and DN (Shared mechanisms: hyperglycemia, polyol pathway activation).
-* **Cardio-Metabolic Group:** CHD and FLD (Shared mechanisms: insulin resistance, dyslipidemia).
-
 ![Model Framework](https://github.com/ohiotxw/MTL/blob/main/123.png)
 *(Note: Please replace the path above with the actual path to Figure 3 from your paper)*
 
