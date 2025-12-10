@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Framework](https://img.shields.io/badge/PyTorch-1.8%2B-orange.svg)](https://pytorch.org/)
 
-This repository contains the official implementation of the paper: **"DGHME: A Hierarchical Hybrid Expert Multi-task Learning Model for Disease Grouping in Diabetes Complication Prediction"** (IEEE Journal of Biomedical and Health Informatics).
+This repository contains the official implementation of the paper: **"DGHME: A Hierarchical Hybrid Expert Multi-task Learning Model for Disease Grouping in Diabetes Complication Prediction"**.
 
 **DGHME** (Disease-Grouping Hierarchical Mixed Expert) is a novel multi-task learning framework designed to predict four major complications of Type 2 Diabetes Mellitus (T2DM): **Diabetic Retinopathy (DR)**, **Diabetic Nephropathy (DN)**, **Coronary Heart Disease (CHD)**, and **Fatty Liver Disease (FLD)**.
 
@@ -70,7 +70,6 @@ pip install -r requirements.txt
 The study utilizes a dataset from the **Population Health Data Archive (PHDA)** containing 3,000 T2DM patient records.
 
   * **Features:** 46 total (8 physiological + 38 biochemical).
-  * **Tasks:** Binary classification for DR, DN, CHD, FLD.
 
 > **Note:** Due to privacy regulations, the raw dataset is not included in this repository. Researchers can request access via the China National Center for Population Health Science and Data or use their own tabular datasets formatted similarly (Rows: Patients, Cols: Features + Labels).
 
@@ -106,7 +105,6 @@ To train baseline models (e.g., MMoE, Shared-Bottom):
 ```bash
 python train.py --model MMoE
 ```
-
 
 ## 🤝 Citation
 
