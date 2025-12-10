@@ -22,7 +22,7 @@ Experiments on real-world datasets show that DGHME significantly outperforms sta
 ## 🏗️ Model Architecture
 
 ![Model Framework](https://github.com/ohiotxw/MTL/blob/main/123.png)
-*(Note: Please replace the path above with the actual path to Figure 3 from your paper)*
+
 
 ## 📂 Project Structure
 
@@ -102,17 +102,5 @@ To train baseline models (e.g., MMoE, Shared-Bottom):
 python train.py --model MMoE
 ```
 
-## 🤝 Citation
 
-If you find this work useful for your research, please cite our paper:
-
-```bibtex
-@article{tang2024dghme,
-  title={DGHME: A Hierarchical Hybrid Expert Multi-task Learning Model for Disease Grouping in Diabetes Complication Prediction},
-  author={Tang, Xiaowei and Li, Hongru and Han, Bowen and Wang, Chenglei and Xu, Lisheng and Yu, Xia},
-  journal={IEEE Journal of Biomedical and Health Informatics},
-  year={2026},
-  publisher={IEEE}
-}
-```
 
