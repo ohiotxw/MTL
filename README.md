@@ -1,70 +1,165 @@
+这是一个为您准备的 GitHub `README.md` 文档草稿。它是根据您提供的论文内容（DGHME模型）编写的，结构符合开源学术代码仓库的标准规范。
 
+您可以直接复制以下 markdown 代码到您的项目中，并根据您实际的代码文件结构稍作调整。
 
-# 概览 (Overview)
+-----
 
-**DGHME** 是一个基于 PyTorch 的深度学习多任务模型，专为**临床表格数据**设计。它能够从真实的患者数据中学习，并对多种并发症风险进行高精度的同步预测。
+```markdown
+# DGHME: A Hierarchical Hybrid Expert Multi-task Learning Model for Disease Grouping
 
-| 重要链接 (Important Links) | |
-| :--- | :--- |
-| :computer: **[项目网站][项目网站]** | 访问我们的项目网站，了解更多关于我们的医疗预测模型生态系统。 |
-| :orange\_book: **[技术博客][技术博客]** | 深入了解多任务学习、模型可解释性以及在临床AI中的应用。 |
-| :book: **[文档][文档]** | 包含快速入门、用户指南、开发文档和API参考。 |
-| :octocat: **[代码仓库][代码仓库]** | 本项目的 GitHub 仓库链接。 |
-| :keyboard: **[开发状态][开发状态]** | 本软件目前处于 **Beta** 测试阶段。 |
-| [ **社区**][Community] | 加入我们的 Slack 工作区，参与讨论并获取最新公告。 |
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Framework](https://img.shields.io/badge/PyTorch-1.8%2B-orange.svg)](https://pytorch.org/)
 
-目前，该库实现了在 *[此处添加您的论文标题]* 论文中描述的 **DGHME** 模型，该论文发表于 *[此处添加会议/期刊名称，如 AMIA 2025]*。
+This repository contains the official implementation of the paper: **"DGHME: A Hierarchical Hybrid Expert Multi-task Learning Model for Disease Grouping in Diabetes Complication Prediction"** (IEEE Journal of Biomedical and Health Informatics).
 
-# 安装 (Install)
+**DGHME** (Disease-Grouping Hierarchical Mixed Expert) is a novel multi-task learning framework designed to predict four major complications of Type 2 Diabetes Mellitus (T2DM): **Diabetic Retinopathy (DR)**, **Diabetic Nephropathy (DN)**, **Coronary Heart Disease (CHD)**, and **Fatty Liver Disease (FLD)**.
 
-您可以通过 `pip` 或 `conda` 直接安装 **DGHME** 独立库。
+## 📖 Abstract
 
-**使用 `pip`:**
+Accurate identification and prediction of diabetes complications are crucial for improving patient health. However, existing prediction models predominantly employ single-task learning (STL) paradigms, failing to fully leverage the intrinsic correlations among different complications.
+
+To address this, we propose **DGHME**, which integrates clinical-pathological grouping knowledge into a multi-task learning (MTL) architecture. The model features:
+1.  A **Bottom-layer Self-attention Shared Expert** network to filter noise and extract relevant features.
+2.  A **Hierarchical Structure** comprising group-internal shared experts, task-private experts, and global shared experts.
+3.  An **Adaptive Gating Mechanism** and **Uncertainty-based Loss Weighting** strategy to balance learning across tasks.
+
+Experiments on real-world datasets show that DGHME significantly outperforms state-of-the-art baselines (including MMoE, PLE, and STEM-Net) in both AUC-ROC and AUC-PR metrics.
+
+## 🏗️ Model Architecture
+
+The DGHME framework is designed based on pathophysiological connections:
+* **Microvascular Group:** DR and DN (Shared mechanisms: hyperglycemia, polyol pathway activation).
+* **Cardio-Metabolic Group:** CHD and FLD (Shared mechanisms: insulin resistance, dyslipidemia).
+
+![Model Framework](path/to/your/image/Fig3_DGHME_framework.png)
+*(Note: Please replace the path above with the actual path to Figure 3 from your paper)*
+
+## 📂 Project Structure
+
+```
+
+DGHME/
+├── data/                   \# Data preprocessing scripts and sample data
+│   ├── preprocess.py       \# One-hot encoding and standardization
+│   └── ...
+├── models/                 \# Model definitions
+│   ├── dghme.py            \# Main DGHME model architecture
+│   ├── layers.py           \# Self-attention, Gating networks, Towers
+│   └── baselines.py        \# MMoE, Shared-Bottom, etc.
+├── utils/                  \# Utility functions
+│   ├── metrics.py          \# AUC-ROC, AUC-PR calculation
+│   └── loss.py             \# Uncertainty-based loss weighting
+├── train.py                \# Main training script
+├── config.py               \# Hyperparameter configurations
+├── requirements.txt        \# Dependencies
+└── README.md
+
+````
+
+## 🛠️ Requirements
+
+The code was tested with **Python 3.8+** and **PyTorch**.
+Install dependencies via:
 
 ```bash
-pip install dghme
-```
+pip install -r requirements.txt
+````
 
-**使用 `conda`:**
+**Core Dependencies:**
+
+  * torch
+  * numpy
+  * pandas
+  * scikit-learn
+  * matplotlib (for plotting results)
+
+## 📊 Dataset
+
+The study utilizes a dataset from the **Population Health Data Archive (PHDA)** containing 3,000 T2DM patient records.
+
+  * **Features:** 46 total (8 physiological + 38 biochemical).
+  * **Tasks:** Binary classification for DR, DN, CHD, FLD.
+
+> **Note:** Due to privacy regulations, the raw dataset is not included in this repository. Researchers can request access via the China National Center for Population Health Science and Data or use their own tabular datasets formatted similarly (Rows: Patients, Cols: Features + Labels).
+
+**Data Format Expectations:**
+
+  * Numerical features should be standardized (Zero mean, Unit variance).
+  * Categorical features should be One-hot encoded.
+
+## 🚀 Usage
+
+### 1\. Configuration
+
+You can adjust hyperparameters in `config.py`. The default settings used in the paper are:
+
+  * **Batch Size:** 64
+  * **Learning Rate:** 0.001
+  * **Optimizer:** Adam
+  * **Dropout:** 0.4
+  * **Epochs:** 500
+  * **Bottom Experts:** 4
+  * **Hierarchical Experts:** 2 per group, 2 private, 2 global
+
+### 2\. Training
+
+To train the DGHME model:
 
 ```bash
-conda install -c pytorch -c your-channel dghme
+python train.py --model DGHME --epochs 500 --batch_size 64
 ```
 
-当直接使用 DGHME 库时，您可能需要手动将数据预处理为正确的格式，例如：
+To train baseline models (e.g., MMoE, Shared-Bottom):
 
-  * 连续特征必须是浮点数（`float`）。
-  * 分类特征必须是整数（`int`）或字符串（`string`）。
-  * 数据中不应包含任何缺失值。
-
-# 使用示例 (Usage Example)
-
-在此示例中，我们加载一个内置的糖尿病并发症模拟数据集。我们使用 `DGHME` 模型从真实数据中学习，然后对新样本进行预测。
-
-```python
-from dghme import DGHME
-from dghme import load_demo
-
-# 加载模拟的患者数据和任务信息
-real_data, continuous_cols, target_cols, task_groups_config = load_demo()
-
-# 初始化 DGHME 模型
-# 模型的关键在于定义任务分组
-dghme = DGHME(
-    task_groups=task_groups_config,
-    epochs=100
-)
-
-# 使用真实数据进行训练
-dghme.fit(real_data, continuous_cols, target_cols)
-
-# 创建一些新的患者数据用于预测 (这里我们使用训练数据的前5行作为示例)
-new_patient_data = real_data.head(5)
-
-# 进行预测
-predictions = dghme.predict(new_patient_data)
-
-print(predictions)
+```bash
+python train.py --model MMoE
 ```
 
-*关于此模拟数据集的更多信息，请参阅我们的文档。*
+## 📈 Results
+
+DGHME achieves superior performance compared to single-task (GBDT, DNN) and multi-task baselines.
+
+| Model | Avg AUC-ROC | Avg AUC-PR |
+| :--- | :---: | :---: |
+| GBDT | 0.7673 | 0.6757 |
+| DNN | 0.7591 | 0.6692 |
+| MMoE | 0.7682 | 0.6818 |
+| STEM-Net | 0.7775 | 0.6900 |
+| **DGHME (Ours)** | **0.8014** | **0.7141** |
+
+*Results based on 5-fold cross-validation.*
+
+## 🤝 Citation
+
+If you find this work useful for your research, please cite our paper:
+
+```bibtex
+@article{tang2024dghme,
+  title={DGHME: A Hierarchical Hybrid Expert Multi-task Learning Model for Disease Grouping in Diabetes Complication Prediction},
+  author={Tang, Xiaowei and Li, Hongru and Han, Bowen and Wang, Chenglei and Xu, Lisheng and Yu, Xia},
+  journal={IEEE Journal of Biomedical and Health Informatics},
+  year={2024},
+  publisher={IEEE}
+}
+```
+
+## 📧 Contact
+
+For any questions, please contact:
+
+  * Xiaowei Tang: tangxw@stumail.neu.edu.cn
+  * Xia Yu (Corresponding Author): yuxia@ise.neu.edu.cn
+
+## Acknowledgments
+
+This work was supported by the Noncommunicable Chronic Diseases-National Science and Technology Major Project and the National Natural Science Foundation of China.
+
+```
+
+### 说明与建议：
+
+1.  **图片占位符**：我在文档中留了 `![Model Framework](path/to/your/image/Fig3_DGHME_framework.png)`。建议您将论文中的 **Fig. 1 (Overall structure)** 或 **Fig. 3 (DGHME framework)** 截图保存为图片文件（如 png），放入仓库的文件夹中，并替换该路径。这样能大大增加 Readme 的可读性。
+2.  **BibTeX 年份**：我在 Citation 中写了 2024，如果论文最终发表年份是 2025，请手动修改。
+3.  **代码结构**：`Project Structure` 部分是假设的标准结构。如果您的实际代码结构不同（例如所有代码都在一个文件中），请相应修改该部分。
+4.  **License**：如果您打算开源代码，记得在仓库中添加一个 `LICENSE` 文件（如 MIT 或 Apache 2.0），这对于学术代码也是推荐的。
+```
