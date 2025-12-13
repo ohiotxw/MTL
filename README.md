@@ -67,7 +67,7 @@ The study utilizes a dataset from the **Population Health Data Archive (PHDA)** 
 
   * **Features:** 46 total (8 physiological + 38 biochemical).
 
-> **Note:** Due to privacy regulations, the raw dataset is not included in this repository. Researchers can request access via the China National Center for Population Health Science and Data or use their own tabular datasets formatted similarly (Rows: Patients, Cols: Features + Labels).
+> **Note:** Due to privacy regulations, the raw dataset is not included in this repository. Researchers can request access via the China National Center for Population Health Science and Data.
 
 **Data Format Expectations:**
 
