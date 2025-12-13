@@ -96,11 +96,5 @@ To train the DGHME model:
 python train.py --model DGHME --epochs 500 --batch_size 64
 ```
 
-To train baseline models (e.g., MMoE, Shared-Bottom):
-
-```bash
-python train.py --model MMoE
-```
-
 
 
