@@ -21,7 +21,7 @@ Experiments on real-world datasets show that DGHME significantly outperforms sta
 
 ## 🏗️ Model Architecture
 
-![Model Framework](https://github.com/ohiotxw/MTL/blob/main/123.pdf)
+![Model Framework](https://github.com/ohiotxw/MTL/blob/main/图123.pdf)
 
 
 ## 📂 Project Structure
